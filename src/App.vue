@@ -7,9 +7,13 @@
     </button>
     <button type="reset" @click="resetInput">Reset</button>
     <h2>{{ message }}</h2>
-    <model 
-    :Header="Header" :SubHeader="SubHeader" theme="star"
-    />
+
+    <input type="checkbox" @click="toggleModel" />Toggle the Model
+
+    <div v-if="showModel">
+      <model :Header="Header" :SubHeader="SubHeader" theme="star" 
+      @customeClose="toggleModel"/>
+    </div>
   </div>
 </template>
 
@@ -18,19 +22,23 @@ import Model from "./components/Model.vue";
 
 export default {
   // name: "App2",
-  components:{  Model  },
+  components: { Model },
   // root component and sub compoenet need to mount on APP , Name is optional
   data() {
     return {
       myTitle: "This is my first Vue js to build application",
       message: "",
-      Header:'This is main header',
-      SubHeader:'This is Sub Header part 2 ' ,
-      theam1:'star'
-    
+      Header: "This is main header",
+      SubHeader: "This is Sub Header part 2 ",
+      theam1: "star",
+      showModel: false,
     };
   },
   methods: {
+    toggleModel() {
+      this.showModel = !this.showModel ;
+      console.log("toggle has been clicked ", this.showModel);
+    },
     resetInput() {
       this.$refs.Email.value = " ";
       this.message = "";
@@ -61,9 +69,7 @@ export default {
  
 // this styles are global scoppped if Scopped not mentioned 
 <style scoped>
-
-
-h1{
+h1 {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size: 20px;
   text-decoration: underline;

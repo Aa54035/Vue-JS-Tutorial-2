@@ -1,16 +1,20 @@
 <template>
-  <div class="backdrop">
-    <div class="model" :class="{sale : theme === 'star'}">
-      <p>{{Header }}</p>
-      <p>{{SubHeader }}</p>
-      
+  <div class="backdrop" @click="closeModel">
+    <div class="model" :class="{ sale: theme === 'star' }">
+      <p>{{ Header }}</p>
+      <p>{{ SubHeader }}</p>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-    props:['Header','SubHeader','theme']
+  props: ["Header", "SubHeader", "theme"],
+  methods: {
+    closeModel() {
+      this.$emit("customeClose");dir
+    },
+  },
 };
 </script>
 
@@ -31,18 +35,17 @@ export default {
   flex-direction: column;
   align-items: flex-start;
 }
- p{
-     border: 2px dotted black;
- }
+p {
+  border: 2px dotted black;
+}
 
 .model.sale {
-    background: crimson;
-    color:white
+  background: crimson;
+  color: white;
 }
-.model.sale p{
-    background: greenyellow;
-    color:black
+.model.sale p {
+  background: greenyellow;
+  color: black;
 }
-
 </style>
 
