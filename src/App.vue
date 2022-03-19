@@ -7,19 +7,27 @@
     </button>
     <button type="reset" @click="resetInput">Reset</button>
     <h2>{{ message }}</h2>
+    <model 
+    :Header="Header" :SubHeader="SubHeader" theme="star"
+    />
   </div>
 </template>
 
  <script>
-import HelloWorld from "./components/HelloWorld";
+import Model from "./components/Model.vue";
 
 export default {
   // name: "App2",
+  components:{  Model  },
   // root component and sub compoenet need to mount on APP , Name is optional
   data() {
     return {
       myTitle: "This is my first Vue js to build application",
       message: "",
+      Header:'This is main header',
+      SubHeader:'This is Sub Header part 2 ' ,
+      theam1:'star'
+    
     };
   },
   methods: {
@@ -51,17 +59,11 @@ export default {
 };
 </script>
  
-// this styles are global scoppped 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-h1 {
+// this styles are global scoppped if Scopped not mentioned 
+<style scoped>
+
+
+h1{
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size: 20px;
   text-decoration: underline;
